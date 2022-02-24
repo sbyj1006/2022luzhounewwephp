@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use Qcloud\Sms\SmsSingleSender;
 use think\Db;
 use fast\Tree;
 use think\Session;
@@ -155,6 +156,35 @@ class Article extends Backend
 //                        $params['type'] =0;
 //                    }
                     $result = $this->model->allowField(true)->save($params);
+                    if($result){
+
+                        $wheresh['status']=1;
+                        $usersh=Db::name('user')->where($wheresh)->select();
+                        foreach ($usersh as  $key=>$val){
+                            if($val['mobile']){
+                                // 短信应用 SDK AppID
+                                $appid = 1400605895; // SDK AppID 以1400开头
+                                // 短信应用 SDK AppKey
+                                $appkey = "87570dfb5e76ba732f3ba42d79c69aa8";
+                                // 需要发送短信的手机号码
+                                $phoneNumbers = $val['mobile'];
+                                // 短信模板 ID，需要在短信控制台中申请
+                                $templateId = 1315806;  // NOTE: 这里的模板 ID`7839`只是示例，真实的模板 ID 需要在短信控制台中申请
+                                $smsSign = "小泸公享"; // NOTE: 签名参数使用的是`签名内容`，而不是`签名ID`。这里的签名"腾讯云"只是示例，真实的签名需要在短信控制台申请
+
+                                try {
+                                    $ssender = new SmsSingleSender($appid, $appkey);
+//            $params = [rand(1000, 9999)];//生成随机数
+                                    $params[0]=$user['bumenjg'].$user['nickname'];
+                                    $result = $ssender->sendWithParam("86", $phoneNumbers, $templateId, $params, $smsSign, "", "");
+//        $rsp = json_decode($result);
+//        return json(["result"=>$rsp->result,"code"=>$params,'res'=>$rsp]);
+                                } catch(\Exception $e) {
+//        echo var_dump($e);
+                                }
+                            }
+                        }
+                    }
                     Db::commit();
                 } catch (ValidateException $e) {
                     Db::rollback();

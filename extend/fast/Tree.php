@@ -100,6 +100,25 @@ class Tree
     }
 
     /**
+     * 得到子级数组
+     * @param int
+     * @return array
+     */
+    public function getChilds($myid)
+    {
+        $newarr = [];
+        foreach ($this->arr as $value) {
+            if (!isset($value['ids'])) {
+                continue;
+            }
+            if ($value[$this->pidname] == $myid) {
+                $newarr[$value['ids']] = $value;
+            }
+        }
+        return $newarr;
+    }
+
+    /**
      * 读取指定节点的所有孩子节点
      * @param int     $myid     节点ID
      * @param boolean $withself 是否包含自身
@@ -413,6 +432,41 @@ class Tree
     }
 
     /**
+     *
+     * 获取树状数组
+     * @param string $myid       要查询的ID
+     * @param string $itemprefix 前缀
+     * @return array
+     */
+    public function getTreeArrays($myid, $itemprefix = '')
+    {
+        $childs = $this->getChilds($myid);
+        $n = 0;
+        $data = [];
+        $number = 1;
+        if ($childs) {
+            $total = count($childs);
+            foreach ($childs as $id => $value) {
+                $j = $k = '';
+                if ($number == $total) {
+                    $j .= $this->icon[2];
+                    $k = $itemprefix ? $this->nbsp : '';
+                } else {
+                    $j .= $this->icon[1];
+                    $k = $itemprefix ? $this->icon[0] : '';
+                }
+                $spacer = $itemprefix ? $itemprefix . $j : '';
+                $value['spacer'] = $spacer;
+                $data[$n] = $value;
+                $data[$n]['childlist'] = $this->getTreeArrays($id, $itemprefix . $k . $this->nbsp);
+                $n++;
+                $number++;
+            }
+        }
+        return $data;
+    }
+
+    /**
      * 将getTreeArray的结果返回为二维数组
      * @param array  $data
      * @param string $field
@@ -431,6 +485,32 @@ class Tree
             }
             if ($childlist) {
                 $arr = array_merge($arr, $this->getTreeList($childlist, $field));
+            }
+        }
+        return $arr;
+    }
+
+
+
+    /**
+     * 将getTreeArray的结果返回为二维数组
+     * @param array  $data
+     * @param string $field
+     * @return array
+     */
+    public function getTreeLists($data = [], $field = 'name')
+    {
+        $arr = [];
+        foreach ($data as $k => $v) {
+            $childlist = isset($v['childlist']) ? $v['childlist'] : [];
+            unset($v['childlist']);
+            $v[$field] = $v['spacer'] . ' ' . $v[$field];
+            $v['haschild'] = $childlist ? 1 : 0;
+            if ($v['ids']) {
+                $arr[] = $v;
+            }
+            if ($childlist) {
+                $arr = array_merge($arr, $this->getTreeLists($childlist, $field));
             }
         }
         return $arr;

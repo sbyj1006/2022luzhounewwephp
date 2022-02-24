@@ -969,12 +969,15 @@ exit(json_encode(['code'=>400, 'msg'=>'暂无数据','data'=>$where]));
                         if ($puser && $pteam && $pzhihang) {
 
                             $addallOrderNumbera['allOrderNumber'] = $puser['allOrderNumber'] + 1;
+                            $addallOrderNumbera['all_allOrderNumber'] = $puser['all_allOrderNumber'] + 1;
                             $rea = Db::name('user')->where('id', $pers['user_id'])->update($addallOrderNumbera);
 
                             $addallOrderNumberb['allOrderNumber'] = $pteam['allOrderNumber'] + 1;
+                            $addallOrderNumberb['all_allOrderNumber'] = $pteam['all_allOrderNumber'] + 1;
                             $reb = Db::name('categoryuser')->where('id', $puser['teamid'])->update($addallOrderNumberb);
 
                             $addallOrderNumberc['allOrderNumber'] = $pzhihang['allOrderNumber'] + 1;
+                            $addallOrderNumberc['all_allOrderNumber'] = $pzhihang['all_allOrderNumber'] + 1;
                             $rec = Db::name('categoryuser')->where('id', $puser['zhihangid'])->update($addallOrderNumberc);
                             if ($rea && $reb && $rec) {
                                 $updian['dian'] = 1;
@@ -1010,12 +1013,15 @@ exit(json_encode(['code'=>400, 'msg'=>'暂无数据','data'=>$where]));
                     if($puser && $pteam && $pzhihang){
 
                         $addallOrderNumbera['shoudanOrderNumber']=$puser['shoudanOrderNumber']+1;
+                        $addallOrderNumbera['shoudanOrderNumber']=$puser['all_shoudanOrderNumber']+1;
                         $rea=Db::name('user')->where('id',$pers['user_id'])->update($addallOrderNumbera);
 
                         $addallOrderNumberb['shoudanOrderNumber']=$pteam['shoudanOrderNumber']+1;
+                        $addallOrderNumberb['all_shoudanOrderNumber']=$pteam['all_shoudanOrderNumber']+1;
                         $reb=Db::name('categoryuser')->where('id',$puser['teamid'])->update($addallOrderNumberb);
 
                         $addallOrderNumberc['shoudanOrderNumber']=$pzhihang['shoudanOrderNumber']+1;
+                        $addallOrderNumberc['all_shoudanOrderNumber']=$pzhihang['all_shoudanOrderNumber']+1;
                         $rec=Db::name('categoryuser')->where('id',$puser['zhihangid'])->update($addallOrderNumberc);
                         if($rea && $reb && $rec){
                             $updian['dian']=1;
@@ -1049,12 +1055,15 @@ exit(json_encode(['code'=>400, 'msg'=>'暂无数据','data'=>$where]));
                     if($puser && $pteam && $pzhihang){
 
                         $addallOrderNumbera['daikuanOrderNumber']=$puser['daikuanOrderNumber']+1;
+                        $addallOrderNumbera['all_daikuanOrderNumber']=$puser['all_daikuanOrderNumber']+1;
                         $rea=Db::name('user')->where('id',$pers['user_id'])->update($addallOrderNumbera);
 
                         $addallOrderNumberb['daikuanOrderNumber']=$pteam['daikuanOrderNumber']+1;
+                        $addallOrderNumberb['all_daikuanOrderNumber']=$pteam['all_daikuanOrderNumber']+1;
                         $reb=Db::name('categoryuser')->where('id',$puser['teamid'])->update($addallOrderNumberb);
 
                         $addallOrderNumberc['daikuanOrderNumber']=$pzhihang['daikuanOrderNumber']+1;
+                        $addallOrderNumberc['all_daikuanOrderNumber']=$pzhihang['all_daikuanOrderNumber']+1;
                         $rec=Db::name('categoryuser')->where('id',$puser['zhihangid'])->update($addallOrderNumberc);
                         if($rea && $reb && $rec){
                             $updian['dian']=1;

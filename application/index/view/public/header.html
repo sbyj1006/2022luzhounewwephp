@@ -42,14 +42,24 @@
                             </li>
                             {volist name="nav" id="vo"}
                             <li class="dropdown {if condition =' $title.id eq $vo.id '} active {/if}">
+                                {notempty name="$vo.url"}
+                                <a href="{$vo.url}" {if count($vo.z_nav)>0} class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false"{/if}>{$vo.name}
+                                </a>
+                                {else\}
                                 <a href="{$vo.route}" {if count($vo.z_nav)>0} class="dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false"{/if}>{$vo.name}
                                 </a>
+                                {/notempty}
                                 {eq name="$vo.id" value="1"}
                                 {if count($vo.z_nav)>1}
                                 <ul class="dropdown-menu animated" >
                                     {volist name="vo.z_nav" id="vo2"}
+                                    {notempty name="vo2.url"}
+                                    <li><a href="{vo2.url}">{$vo2.name}</a></li>
+                                    {else\}
                                     <li><a href="{:url('/abouts')}#{$vo2['id']}">{$vo2.name}</a></li>
+                                    {/notempty}
                                     {/volist}
                                 </ul>
                                 {/if}
