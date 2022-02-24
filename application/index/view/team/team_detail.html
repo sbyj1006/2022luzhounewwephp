@@ -1,0 +1,64 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+<!--内页-->
+{include file="public/middle" /}
+
+
+
+<div class="page-ny">
+
+    <div class="container p0">
+
+
+        <div class="col-md-12 p8">
+            <div class="page-cent">
+
+                <div class="col-md-3">
+                    <a class="zj-div-l">
+                        <div class="zj-img-l"><img src="{$list.image}" class="img-responsive center-block"></div>
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <div class="ser-tit-r">
+
+                        <div class="ser-en-r">{$list.title} </div>
+
+                        <div class="ser-note-r">{$list.titles}</div>
+                        <div class="ser-x-r"></div>
+
+                        <div class="ser-con-r">
+
+                            {$list.content}
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--foot-->
+{include file="public/footer" /}
+</body>
+
+
+</html>

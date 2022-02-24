@@ -1,0 +1,337 @@
+
+<div class="foota">
+    <div class="container p0">
+
+        <div class="col-md-12 p0">
+
+            <div class="col-md-2">
+                <div class="pagetit">
+                    <div class="titcn">友情链接</div>
+                    <div class="clearfix"></div>
+                    <div class="titen">Cluster link</div>
+                    <div class="clearfix"></div>
+                    <div class="titx"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="sel-links">
+                    <a >友情链接 <div class="iconfont icon-ai-arrow-down"></div></a>
+                    <ul class="sel-links-ul">
+                        {volist name="$link" id="vo"}
+                        <li><a href="{$vo.url}">{$vo.title}</a> </li>
+                      {/volist}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="pagefoot">
+
+    <div class="container-fluid p0">
+
+        <div class="col-md-10 col-lg-offset-1 p0">
+
+            <div class="footcen">
+<div class="col-md-12 p8">
+    <div class="footnav">
+        {volist name="$footer_nav" id="vo"}
+
+        <a href="{$vo.url}"> {$vo.title} </a> |
+        {/volist}
+
+    </div>
+</div>
+                <div class="col-md-6 p8">
+                    <div class="footimg">
+
+                        <img src="{$information.dlogo_img}" class="img-responsive">
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 p0">
+
+                    <div class="col-md-8 p8">
+
+                        <div class=" footk">
+                            <div class="footk-t">
+                                {$information.test}
+                            </div>
+                            <div class="footk-c">
+                                地址：{$information.address}<br>
+                                邮箱：{$information.email}<br>
+                                电话：{$information.phone}<br>
+                                {$information.copyright}  <a href="{$information.beian_url}">{$information.beian_number}</a> 川公网安备 51018402000106号
+                                {notempty name="$information.js_title"}
+                                <a href="{$information.js_url}"> {$information.js_title}</a>
+                                {/notempty}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4 p8">
+
+                        <div class="footewm">
+                            <img src="{$information.ewm_img}" ><br>
+                            关注公众号
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<div  class="side visible-lg ">
+    <ul class="side-ul list-unstyled f16">
+
+        <li class="text-center qq"><a href="http://wpa.qq.com/msgrd?v=3&uin={$information.qq}&site=qq&menu=yes" target="_blank"><span class="iconfont icon-QQ1 " ></span><div class="kuang1 " ><span class="iconfont icon-QQ1 " ></span> 在线客服</div></a></li>
+        <!--<li class="text-center weixin"><a href=""><span class="iconfont icon-weixin "></span> <div class="kuang2"><img src="../../public/uploads/ad/20181211\5868762ea176df543edaa0ac17cbc4d5.jpg"   class="img-responsive center-block"></div></a></li>-->
+        <li class="text-center dianhua"><a href=""><span class="iconfont icon-shouji "></span><div class="kuang3 ">电话：{$information.phone} </div> </a></li>
+    </ul>
+</div>
+
+
+
+<script src="/public/home/js/jquery-1.11.0.min.js"></script>
+<script src="/public/home/js/bootstrap.js"></script>
+<script src="/public/home/js/bootsnav.js"></script>
+<!--二维码弹出js	-->
+<!--<script src="https://www.swiper.com.cn/package/swiper-bundle.min.js"></script>-->
+<link href="/public/home/swiper5/css/swiper.min.css?v=1" rel="stylesheet">
+<script src="/public/home/swiper5/js/swiper.min.js"></script>
+<script src="/public/home/swiper5/js/swiper.animate1.0.3.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container-b', {
+        speed: 600,
+        parallax: true,
+        autoHeight: true, //高度随内容变化
+        pagination: {
+            el: '.swiper-pagination-b',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next-b',
+            prevEl: '.swiper-button-prev-b',
+        },
+        loopedSlides: 5,
+        autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+        },
+        on:{
+            init: function(){
+                swiperAnimateCache(this); //隐藏动画元素
+                this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+            },
+            slideChangeTransitionEnd: function(){
+                swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+//                this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+            }
+        },
+    });
+
+
+
+
+    if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
+        //phone
+        var swiper=new Swiper('.sycpcen',{
+            slidesPerView:1,
+            spaceBetween:15,
+            loopedSlides: 1,
+            loop: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.news-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.cp-next',
+                prevEl: '.cp-prev',
+            },
+        })
+
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 3,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+        var swiper = new Swiper('.teams', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+                el: '.teams-swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-team-next',
+                prevEl: '.swiper-team-prev',
+            },
+        });
+
+        var swiper = new Swiper('.fazlc', {
+            slidesPerView: 1,
+            spaceBetween: 15,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+                el: '.fazlc-swiper-pagination',
+                clickable: true,
+//                renderBullet: function (index, className) {
+//                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+//                },
+            },
+            navigation: {
+                nextEl: '.swiper-fazlc-next',
+                prevEl: '.swiper-fazlc-prev',
+            },
+        });
+
+    }else {
+        //PC
+        var swiper = new Swiper('.fazlc', {
+            slidesPerView: 5,
+            spaceBetween: 15,
+            initialSlide :2,
+//            centeredSlides: true,
+            slidesPerGroup: 5,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.fazlc-swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+                },
+            },
+            navigation: {
+                nextEl: '.swiper-fazlc-next',
+                prevEl: '.swiper-fazlc-prev',
+            },
+        });
+        var swiper=new Swiper('.sycpcen',{
+            slidesPerView:3,
+            spaceBetween:15,
+            loopedSlides: 1,
+            loop: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.news-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.cp-next',
+                prevEl: '.cp-prev',
+            },
+        });
+
+
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 6,
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+
+        var swiper = new Swiper('.news-l', {
+            speed: 600,
+            parallax: true,
+            autoplay: {
+                delay: 6000,//1秒切换一次
+            },
+
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.jiant-pre',
+                prevEl: '.jiant-next',
+            },
+            on:{
+                init: function(){
+                    swiperAnimateCache(this); //隐藏动画元素
+                    this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+                },
+                slideChangeTransitionEnd: function(){
+                    swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                    this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+                }
+            }
+        });
+
+        var swiper = new Swiper('.teams', {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+                el: '.teams-swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-team-next',
+                prevEl: '.swiper-team-prev',
+            },
+        });
+    }
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

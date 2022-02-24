@@ -1,0 +1,146 @@
+{include file="public/head" /}
+
+<body>
+
+
+{include file="public/header" /}
+
+{include file="public/banner" /}
+
+<!--内页-->
+
+
+<div class="page-ny ba-f5f5f5">
+
+    <div class="container p0">
+
+        <div class=" col-md-12 p0">
+
+
+
+
+            <div class="col-md-12 p0">
+                <div class="page-con mt20">
+
+                    <div class="col-md-6 p8">
+                        <div class="pagea-tit">
+                            <div class="lxwm-name " style="text-align: left;"> <span> 联系我们</span> · 您可以直接与我们联系</div>
+                            <div class="lxwm-note" style="text-align: left;">欢迎致电咨询并了解我们的服务，您也可以直接电
+                                话告知您的需求</div>
+
+
+                        </div>
+                        <div class="w100">
+
+                            <ul class="lxwmtel">
+                                {$list.content}
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 p8">
+                        <div class="lxwmform">
+
+                            <form class="form">
+
+                                <div class="form-group">
+                                    <label>您的姓名</label>
+                                    <input class="form-control" placeholder="请输入您的姓名" type="text" id="name" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label>您的电话</label>
+                                    <input class="form-control" placeholder="请输入您的电话" type="text" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label>您的留言</label>
+                                    <textarea class="form-control mytextarea" placeholder="请输入您的留言" id="remarks" name="remarks"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" onclick="formsubmit()" class="btn mybtn">确认提交</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="container-fluid p0 mt20">
+        <div class="lxwmditu">
+            <img src="{$list.image}" class="img-responsive">
+        </div>
+    </div>
+</div>
+<script>
+    function formsubmit() {
+        var name=$("input[name=name]").val();
+        var phone=$("input[name=phone]").val();
+        var remarks=$("textarea[name=remarks]").val();
+
+        if(!name)
+        {
+            alert('请填写姓名!');
+            return false;
+        }
+        if(!phone)
+        {
+            alert('请输入手机号码!');
+            return false;
+        }
+
+        //手机号
+        if(!/^1\d{10}$/.test(phone)){
+            alert('请输入正确手机号码！');
+            return false;
+        }
+
+        if(!remarks)
+        {
+            alert('请填写内容!');
+            return false;
+        }
+
+        $.ajax({
+            async:false,
+            url:"{:url('Contact/msg')}",
+            data:{name:name,phone:phone,remarks:remarks},
+            type:"POST",
+            datatype:"TEXT",
+            success:function(data){
+                if(data==1)
+                {
+                    alert("留言成功，我们会尽快与你联系！");
+                    window.location.href="/";
+                }
+                else
+                {
+                    alert("留言成功失败！");
+                }
+            }
+        });
+
+    }
+</script>
+<!--foot-->
+{include file="public/footer" /}
+
+</body>
+
+</html>

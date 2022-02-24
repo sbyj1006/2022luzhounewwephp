@@ -1,0 +1,176 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="c-zhihangid" class="control-label col-xs-12 col-sm-2">{:__('一级支行')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-zhihangid" data-rule="required" class="form-control selectpicker" name="row[zhihangid]">
+                {volist name="zhihang" id="vo"}
+                <option  value="{$vo.id}" {eq name="$row['zhihangid']" value="$vo.id"} selected{/eq}>{$vo.name}</option>
+                {/volist}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-teamid" class="control-label col-xs-12 col-sm-2">{:__('参赛团队')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-teamid" data-rule="required" class="form-control selectpicker" name="row[teamid]">
+                {volist name="teams" id="vo"}
+                <option  value="{$vo.id}" {eq name="$row['teamid']" value="$vo.id"} selected{/eq}>{$vo.name}</option>
+                {/volist}
+            </select>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="c-teamid" class="control-label col-xs-12 col-sm-2">{:__('等级')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-level" data-rule="required" class="form-control selectpicker" name="row[level]">
+
+                <option  value="0" {eq name="$row['level']" value="0"} selected{/eq}>默认等级</option>
+
+
+                <option  value="3" {eq name="$row['level']" value="3"} selected{/eq}>首页点赞</option>
+
+
+
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-teamid" class="control-label col-xs-12 col-sm-2">{:__('审核')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-sh_type" data-rule="required" class="form-control selectpicker" name="row[sh_type]">
+
+                <option  value="0" {eq name="$row['sh_type']" value="0"} selected{/eq}>默认状态</option>
+
+                <option  value="3" {eq name="$row['sh_type']" value="3"} selected{/eq}>审核权限</option>
+
+
+
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-username" class="control-label col-xs-12 col-sm-2">{:__('微信昵称')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-username"   class="form-control" name="row[wxnickname]" type="text" value="{$row.wxnickname|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">{:__('姓名')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text" value="{$row.nickname|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-mobile" class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-mobile" data-rule="" class="form-control" name="row[mobile]" type="text" value="{$row.mobile|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-jobnumber" class="control-label col-xs-12 col-sm-2">{:__('jobnumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-jobnumber" data-rule="" class="form-control" name="row[jobnumber]" type="text" value="{$row.jobnumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-bumenjg" class="control-label col-xs-12 col-sm-2">{:__('bumenjg')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-bumenjg" data-rule="" class="form-control" name="row[bumenjg]" type="text" value="{$row.bumenjg|htmlentities}">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="c-allOrderNumber" class="control-label col-xs-12 col-sm-2">{:__('allOrderNumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-allOrderNumber" data-rule="" class="form-control" name="row[allOrderNumber]" type="text" value="{$row.allOrderNumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-shoudanOrderNumber" class="control-label col-xs-12 col-sm-2">{:__('shoudanOrderNumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-shoudanOrderNumber" data-rule="" class="form-control" name="row[shoudanOrderNumber]" type="text" value="{$row.shoudanOrderNumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-daikuanOrderNumber" class="control-label col-xs-12 col-sm-2">{:__('daikuanOrderNumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-daikuanOrderNumber" data-rule="" class="form-control" name="row[daikuanOrderNumber]" type="text" value="{$row.daikuanOrderNumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-zannum" class="control-label col-xs-12 col-sm-2">{:__('zannum')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-zannum" data-rule="" class="form-control" name="row[zannum]" type="text" value="{$row.zannum|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('Avatar')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="" class="form-control" size="50" name="row[avatar]" type="text" value="{$row.avatar}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="c-jointime" class="control-label col-xs-12 col-sm-2">{:__('Jointime')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-jointime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[jointime]" type="text" value="{$row.jointime|datetime}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[status]', ['1'=>__('Status 1'), '2'=>__('Status 2')], $row['status'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-iscs" class="control-label col-xs-12 col-sm-2">{:__('iscs')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[iscs]', ['1'=>__('iscs 1'), '2'=>__('iscs 2')], $row['iscs'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-isziyuan" class="control-label col-xs-12 col-sm-2">{:__('isziyuan')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[isziyuan]', ['1'=>__('isziyuan 1'), '2'=>__('isziyuan 2')], $row['isziyuan'])}
+        </div>
+    </div>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

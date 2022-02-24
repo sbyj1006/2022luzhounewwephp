@@ -1,0 +1,78 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+{include file="public/middle" /}
+<!--内页-->
+
+<div class="page-ny">
+
+    <div class="container p0">
+
+
+        <div class="col-md-12 p8">
+
+            <div class="pagetitfull">
+
+                <div class="col-md-10 p0">
+                    <div class="page-tit">
+                        <div class="page-cn">{$ftitle.ename}</div>
+                        <div class="page-en">{$ftitle.name}</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+            <div class="pagecen">
+                <div class="col-md-12 p0">
+                    <ul class="news-sy-ul">
+                    {volist name="$list.list" id="vo"}
+                        <!---->
+                        <li class="col-md-6 p0">
+                            <div class="news-body">
+                                <div class="news-time"><span class="iconfont icon-shijian1"></span> 2021-04-23</div>
+                                <div class="news-tit"><a href="{:url('/news_detail/'.$vo.id)}">{$vo.title}</a></div>
+                                <div class="news-note">
+                                    {$vo.description}
+                                </div>
+
+                                <div class="news-more"><a href="{:url('/news_detail/'.$vo.id)}">MORE+</a> </div>
+                            </div>
+                        </li>
+                        <!---->
+
+{/volist}
+                       </ul>
+
+
+                    <div class="fenyeys">
+                        {$list.page}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--foot-->
+{include file="public/footer" /}
+
+</body>
+
+
+</html>

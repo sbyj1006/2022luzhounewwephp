@@ -1,0 +1,51 @@
+{include file="public/head" /}
+
+<body>
+
+
+<form style="width: 800px; margin: auto">
+
+    <input name="client_id" style="margin: 50px 0; width: 100%;">
+
+    <button type="button" onclick="formsubmit()" class="btn mybtn">确认提交</button>
+
+</form>
+
+<script>
+    function formsubmit() {
+        var client_id=$("input[name=client_id]").val();
+        var phone=$("input[name=phone]").val();
+        var remarks=$("textarea[name=remarks]").val();
+
+        if(!client_id)
+        {
+            alert('请填写客户号!');
+            return false;
+        }
+
+
+
+        $.ajax({
+            async:false,
+            url:"{:url('index/client_id')}",
+            data:{client_id:client_id},
+            type:"POST",
+            datatype:"TEXT",
+            success:function(data){
+                console.log(data)
+                if(data==1)
+                {
+                    alert("留言成功，我们会尽快与你联系！");
+                    window.location.href="/";
+                }
+                else
+                {
+                    alert("留言成功失败！");
+                }
+            }
+        });
+
+    }
+</script>
+<!--foot-->
+{include file="public/footer" /}

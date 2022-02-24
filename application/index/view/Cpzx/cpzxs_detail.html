@@ -1,0 +1,77 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+<!--内页-->
+
+
+
+
+<div class="page-ny">
+
+    <div class="container p0">
+
+
+        <div class=" col-md-12 p0">
+            <div class="ny-page-r">
+
+                        <div class="col-md-12 p8">
+
+                            <div class="pagetitfull">
+
+                                <div class="col-md-10 p0">
+                                    <div class="page-tit">
+                                        <div class="page-cn">{$ftitle.ename}</div>
+                                        <div class="page-en">{$ftitle.name}</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                <!--   无缩略图板式-->
+                <div class="col-md-12 p8">
+                    <div class="page-con mt20">
+
+                        <div class="page-con">
+
+                            {$list.content}
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <!--    有缩略图板式-->
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!--foot-->
+{include file="public/footer" /}
+</body>
+
+
+</html>

@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Tid'          => '分类',
+    'username'        => '客服人员',
+    'client_id'       => '客户号',
+    'Image'        => '图片',
+    'Images'       => '图册',
+    'Videofile'    => '视频',
+    'Description'  => '描述',
+    'Edescription' => '英文描述',
+    'Content'      => '内容',
+    'addtime'      => '开户日期',
+    'Status'       => '发布状态',
+    'Status 0'     => '待发布',
+    'Status 1'     => '发布',
+    'type'          => '客户分类',
+    'type 1'        => '新增客户',
+    'type 2'        => '收单客户',
+    'type 3'        => '贷款客户',
+    'client_type_name'    => '类型',
+    'client_type_name 1'  => '个体工商户',
+    'client_type_name 2'  => '公司类客户',
+    'Recommend'    => '推荐',
+    'Recommend 0'  => '不推荐',
+    'teamname'=>'参赛团队名称',
+    'Recommend 1'  => '推荐',
+    'Hot'          => '热门',
+    'Hot 0'        => '正常',
+    'Hot 1'        => '热门',
+    'Sort'         => '排序',
+    'Createtime'   => '创建时间'
+];

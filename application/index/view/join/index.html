@@ -1,0 +1,122 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+{include file="public/middle" /}
+<!--内页-->
+
+
+<div class="page-ny">
+
+
+    <div class="container-fluid p0">
+        <div class="col-md-10 col-md-offset-1 p8">
+
+            <div class="pagetitfull">
+
+                <div class="col-md-10 p0">
+                    <div class="page-tit">
+                        <div class="page-cn"> {$ftitle.ename}</div>
+                        <div class="page-en">{$ftitle.name}</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1 p8">
+
+            <img src="{$ftitle.image}" class="img-responsive">
+
+        </div>
+
+
+        <div class="col-md-10 col-md-offset-1 p8">
+
+            <div class="recruit-container">
+                <div class="scroll">
+                    <div class="recruit-main">
+                        <div class="lists lists-title">
+                            <div class="penel num-penel">
+                                <span>招聘岗位</span>
+                            </div>
+                            <div class="penel txt-penel">
+                                <span>招聘人数</span>
+                            </div>
+                            <div class="penel format-penel">
+                                <span>工作地点</span>
+                            </div>
+                            <div class="penel format-penel">
+                                <span>联系电话</span>
+                            </div>
+                            <div class="penel size-penel">
+                                <span>发布时间</span>
+                            </div>
+                        </div>
+
+{volist name="$list.list" id="vo"}
+                        <div class="li">
+                            <div class="lists">
+                                <div class="penel num-penel">
+                                    <span>{$vo.title}</span>
+                                </div>
+                                <div class="penel txt-penel">
+                                    <span>{$vo.labelsa}</span>
+                                </div>
+                                <div class="penel format-penel">
+                                    <span>{$vo.labelsb}</span>
+                                </div>
+                                <div class="penel format-penel">
+                                    <span>{$vo.titles}</span>
+                                </div>
+                                <div class="penel format-penel">
+                                    <span>{$vo.addtime|strtotime|date="Y/m/d",###}</span>
+                                    <span class="iconfont icon-jiantou8 open-close"></span>
+                                </div>
+                            </div>
+                            <div class="recruit-text" style="display: none;">
+                                <div class="text">
+                                    {$vo.content}
+                                </div>
+
+                            </div>
+                        </div>
+{/volist}
+
+                        <div class="fenyeys">
+                            {$list.page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!--foot-->
+{include file="public/footer" /}
+<script>
+    $('.lists .penel .open-close').click(function(){
+        $(this).toggleClass('on');
+        $(this).parent().parent().next('.recruit-text').stop().slideToggle(200);
+
+    });
+</script>
+</body>
+
+
+</html>

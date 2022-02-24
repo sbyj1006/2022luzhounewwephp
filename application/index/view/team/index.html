@@ -1,0 +1,66 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+<!--内页-->
+
+<div class="page-ny">
+
+    <div class="container-fluid p0">
+        <div class="col-md-10 col-md-offset-1 p8">
+
+            <div class="pagetitfull">
+
+                <div class="col-md-10 p0">
+                    <div class="page-tit">
+                        <div class="page-cn">{$title.ename}</div>
+                        <div class="page-en">{$title.name}</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1  p8">
+            <div class="casepage">
+
+                    {volist name="$list.list" id="vo"}
+                    <!---->
+                    <div class="col-md-3 p8">
+                        <a href="{:url('/team_detail/'.$vo['id'])}" class="ryzz-div">
+                            <div class="ryzz-img">
+                                <img src="{$vo.image}" class="img-responsive center-block">
+                            </div>
+                            <div class="ryzz-tit">{$vo.title}</div>
+                            <div class="ryzz-note">{$vo.titles}</div>
+                        </a>
+                    </div>
+                    {/volist}
+
+
+<div class="fenyeys">
+    {$list.page}
+</div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--foot-->
+{include file="public/footer" /}
+</body>
+
+
+</html>

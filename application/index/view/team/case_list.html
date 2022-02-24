@@ -1,0 +1,75 @@
+{include file="public/head" /}
+
+<body>
+
+
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+<!--内页-->
+{include file="public/middle" /}
+
+
+<div class="page-ny">
+
+    <div class="container-fluid p0">
+        <div class="col-md-10 col-md-offset-1 p8">
+
+            <div class="pagetitfull">
+
+                <div class="col-md-10 p0">
+                    <div class="page-tit">
+                        <div class="page-cn">{$ftitle.ename}</div>
+                        <div class="page-en">{$ftitle.name}</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1 p8">
+            <div class="casepage">
+                {volist name="$list.list" id="vo"}
+                <!---->
+                <div class="col-md-4 p8">
+                    <div class="caselist">
+                        <div class="caselistimg">
+                            <a href="{:url('/cases_detail/'.$vo['id'])}"><img src="{$vo.image}" class="img-responsive"></a>
+                        </div>
+                        <div class="caselistbody">
+                            <div class="caselisttit">
+                                <div class="tita">{$vo.title}</div>
+                                <div class="titb">{$vo.labelsa}</div>
+                            </div>
+                            <div class="caselistnote">
+                                <div class="notea">{$vo.labelsb}</div>
+                                <div class="noteb"><a href="{:url('/cases_detail/'.$vo['id'])}">查看详情>></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+{/volist}
+
+                <div class="fenyeys">
+                    {$list.page}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--foot-->
+{include file="public/footer" /}
+</body>
+
+
+</html>

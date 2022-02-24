@@ -1,0 +1,179 @@
+{include file="public/head" /}
+
+<body>
+
+
+{include file="public/header" /}
+
+
+{include file="public/banner" /}
+
+
+<!--内页-->
+
+
+
+
+<div class="page-ny-nav">
+
+
+
+    <ul class="ny-nav-ul">
+        {volist name="types" id="vo"}
+        <li><a href="{:url('/abouts')}#{$vo['id']}" {if condition="$id eq  $vo.id "}class="active"{/if}>{$vo.name}<small>{$vo.ename}</small></a></li>
+        {/volist}
+    </ul>
+
+
+</div>
+
+
+<!---->
+<div class="page-ny " id="5">
+    <div class="container-fluid p0">
+    <div class="pagetitfull">
+        <div class="col-md-offset-1 col-md-10 p8">
+            <div class="page-tit">
+                <div class="page-cn">{$title.ename}</div>
+                <div class="page-en">{$title.name}</div>
+            </div>
+        </div>
+
+    </div>
+
+
+        <div class="col-md-offset-1 col-md-10 p8">
+
+            <div class="col-md-4 ">
+                <div class="w100 mt40">
+                    <img src="{$title.image}" class="img-responsive">
+                </div>
+            </div>
+
+
+            <div class="col-md-8 ">
+                <div class="aboutbody">
+                {volist name="$listt" id="vo"}
+                    <!---->
+                    <div class="about-tit lin50">
+                        <span class="iconfont icon-gouxuan1"></span> {$vo.title}
+                    </div>
+                    <div class="pagecen nyaboutcon">
+                        {$vo.content}
+
+                    </div>
+                    <hr>
+                    <!---->
+
+                {/volist}
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+</div>
+</div>
+<!---->
+<div class="page-main page-fzlc" id="6">
+
+    <div class="container-fluid p0">
+
+        <div class="col-md-10 col-md-offset-1 p8">
+            <div class="page-tit page-tit-c page-tit-zhuse" >
+                <div class="page-cn">肽类<span>药物发展</span></div>
+                <div class="page-en">Development of peptide drugs</div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12 p8">
+            <!-- Swiper -->
+            <div class="fazlc swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper">
+
+                    <!---->
+                    {volist name="fz" id="vo"}
+                    <!---->
+                    <div class="swiper-slide" >
+                        <div class="fazlc-div">
+                            <div class="fazlc-tit"><a href=""> {$vo.titles}</a></div>
+                            <div class="fazlc-titb">{$vo.title}</div>
+                            <div class="fazlc-note">
+                                {$vo.description}
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    {/volist}
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="fazlc-swiper-pagination ">
+        </div>
+
+        <!-- Add Navigation -->
+        <div class="swiper-fazlc-prev " > <span class="iconfont icon-xiazai6"></span> </div>
+        <div class="swiper-fazlc-next " > <span class="iconfont icon-jiantou6"></span> </div>
+
+
+    </div>
+
+</div>
+<!---->
+<div class="page-main " id="30">
+
+    <div class="container-fluid p0">
+
+        <div class="col-md-10 col-md-offset-1 p8">
+            <div class="page-tit page-tit-c page-tit-zhuse" >
+                <div class="page-cn">合作<span>伙伴</span></div>
+                <div class="page-en">cooperative partner</div>
+            </div>
+            <ul class="syser-ul">
+
+                {volist name="hz_img" id="vo"}
+                <li class="col-md-2 col-xs-6 col-sm-6 p8">
+                    <a href="" class="linksimg">
+                        <img src="{$vo.image}" class="img-responsive">
+                    </a>
+
+                </li>
+                {/volist}
+
+
+
+            </ul>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<!--foot-->
+{include file="public/footer" /}
+
+</body>
+
+
+</html>

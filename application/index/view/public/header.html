@@ -1,0 +1,95 @@
+
+<div class="container-fluid p0 topnav navbar-fixed-top  ">
+    <div class="col-md-3 ">
+
+        <div class=" col-md-12 col-xs-8 col-sm-8 p8">
+
+            <div class="jjloog">
+                <img src="{$information.sy_logo}" class="img-responsive ">
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 p8">
+
+            <!-- logo和响应式按钮 -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jm-navbar-collapse">
+                    <span class="iconfont icon-list"></span>
+
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8  p0">
+        <div class="top-right">
+            <a href="" >中文</a> | <a href="">EN</a>
+        </div>
+
+        <nav class="navbar navbar-default bootsnav navbar-right ">
+            <div class="w100 navbar-yb">
+
+
+                <div class="col-md-12   p0">
+
+
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse topbj w100" id="jm-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="/">澳达首页
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            {volist name="nav" id="vo"}
+                            <li class="dropdown {if condition =' $title.id eq $vo.id '} active {/if}">
+                                <a href="{$vo.route}" {if count($vo.z_nav)>0} class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-haspopup="true" aria-expanded="false"{/if}>{$vo.name}
+                                </a>
+                                {eq name="$vo.id" value="1"}
+                                {if count($vo.z_nav)>1}
+                                <ul class="dropdown-menu animated" >
+                                    {volist name="vo.z_nav" id="vo2"}
+                                    <li><a href="{:url('/abouts')}#{$vo2['id']}">{$vo2.name}</a></li>
+                                    {/volist}
+                                </ul>
+                                {/if}
+
+                                {else\}
+                                {if count($vo.z_nav)>1}
+                                <ul class="dropdown-menu animated" >
+                                    {volist name="vo.z_nav" id="vo2"}
+
+                                    {notempty name="$vo2.url"}
+
+                                    <li><a href="{$vo2.url}" target="_blank">{$vo2.name}</a></li>
+
+                                    {else\}
+
+                                    <li><a href="{:url($vo2['route'].$vo2['id'])}">{$vo2.name}</a></li>
+
+                                    {/notempty}
+
+                                    {/volist}
+                                </ul>
+                                {/if}
+                                {/eq}
+                            </li>
+                            {/volist}
+
+
+
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+
+                </div>
+
+
+            </div>
+
+        </nav>
+
+
+    </div>
+
+</div>
