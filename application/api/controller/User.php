@@ -632,7 +632,9 @@ if($usersh){
                     $updatas['client_name']=$data['client_name'];
                     $updatas['client_type_name_b']=$data['client_type_name_b'];
                     $updatas['client_type_name']=$data['client_type_name'];
+                    if($data['client_id']){
                     $updatas['client_id']='KH'.$data['client_id'];
+                    }
                     $updatas['updatetime']=$data['updatetime'];
                     $updatas['addtime']=$data['updatetime'];
                     $updatas['type']=$data['type'];
@@ -648,13 +650,13 @@ if($usersh){
 //                    $checkdata=Db::name('personage')->where(array('client_id'=>$updatas['client_id'],'type'=>1,'status'=>1))->find();
 //                    if($checkdata){
 
-                        $checkdatacf=Db::name('personage')->where(array('client_id'=>$updatas['client_id'],'type'=>$data['type']))->find();
+                        $checkdatacf=Db::name('personage')->where(array('client_name'=>$updatas['client_name'],'type'=>$data['type']))->find();
 if($checkdatacf){
-    exit(json_encode(['code'=>300, 'msg'=>'系统已存在该客户号转换，请勿重复添加','data'=>$updatas]));
+    exit(json_encode(['code'=>300, 'msg'=>'系统已存在该商户名称转换，请勿重复添加','data'=>$updatas]));
 }else{
 
 
-    $upkehus=Db::name('personage')->where('client_id',$updatas['client_id'])->insert($updatas);
+    $upkehus=Db::name('personage')->insert($updatas);
     if($upkehus){
 
 

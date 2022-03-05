@@ -39,7 +39,7 @@ foreach ($message as $key=>$val){
 
     }
 
-    public function chachogn(){
+    public function gengxinkehuhao(){
         $names=input('names');
         $updata['type']=1;
         $updata['username']=$names;
@@ -343,14 +343,22 @@ public function checkxinzheng(){
 
         $res=Db::name('personage')->where('user_id',$val['id'])->where('type',1)->count();
 
-        if($res != $val['allOrderNumber']){
-            $showdata['xinzheng'][$key]=$val['nickname'].'新增排行数据：'.$val['allOrderNumber'].'-记录：'.$res;
+        if($res){
+            $updata['allOrderNumber']=$res;
+            $users = Db::name('user')->where('id',$val['id'])->update($updata);
+            if($users){
+                $showdata['xinzheng'][$key]=$val['nickname'].'新增排行数据更新成功：'.$val['allOrderNumber'].'-记录：'.$res;
+            }else{
+                $showdata['xinzheng'][$key]=$val['nickname'].'新增排行数据更新失败：'.$val['allOrderNumber'].'-记录：'.$res;
+            }
+
         }
 
     }
     }
     exit(json_encode(['showdata'=>$showdata]));
 }
+
 
     public function checkshoudan(){
         $users = Db::name('user')->select();
@@ -360,14 +368,24 @@ public function checkxinzheng(){
 
                 $res=Db::name('personage')->where('user_id',$val['id'])->where('type',2)->count();
 
-                if($res != $val['shoudanOrderNumber']){
-                    $showdata['xinzheng'][$key]=$val['nickname'].'收单排行数据：'.$val['shoudanOrderNumber'].'-收单记录：'.$res;
+                if($res){
+                    $updata['shoudanOrderNumber']=$res;
+                    $users = Db::name('user')->where('id',$val['id'])->update($updata);
+                    if($users){
+                        $showdata['xinzheng'][$key]=$val['nickname'].'新增排行数据更新成功：'.$val['shoudanOrderNumber'].'-记录：'.$res;
+                    }else{
+                        $showdata['xinzheng'][$key]=$val['nickname'].'新增排行数据更新失败：'.$val['shoudanOrderNumber'].'-记录：'.$res;
+                    }
+
                 }
 
             }
         }
         exit(json_encode(['showdata'=>$showdata]));
     }
+
+
+
     public function checkdaikuan(){
         $users = Db::name('user')->select();
 
@@ -392,7 +410,7 @@ public function checkxinzheng(){
         foreach ($message as $key=>$val){
             $updata['dian']=1;
 
-            $res=Db::name('personage')->where('client_id',$val['client_id'])->update($updata);
+            $res=Db::name('personage')->where('id',$val['id'])->update($updata);
             if($res){
                 dump($val['client_id']."<br>更新成功");
             }else{
@@ -414,15 +432,106 @@ foreach ($listd as $key=>$val){
 
     $res=Db::name('personage')->where('id',$val['id'])->update(array('addtime'=>date('Y-m-d', intval($time))));
 if($res){
-    dump("<br>更新成功");
+    dump("<br>更新成功2");
 }else{
-    dump("<br>更新失败");
+    dump("<br>更新失败2");
 }
 //    dump("<br>".$val['client_id'].$val['addtimeb']."-".date('Y-m-d', intval($time))."<br>");
 
 }
 
     }
+
+
+    public function datecheckkh()
+    {
+        $listd=Db::name('personage')->where('type',1)->select();
+        foreach ($listd as $key=>$val){
+
+
+            $res=Db::name('personage')->where('id',$val['id'])->update(array('client_id'=>"KH".$val['client_id']));
+            if($res){
+                dump("<br>更新成功3");
+            }else{
+                dump("<br>更新失败3");
+            }
+//    dump("<br>".$val['client_id'].$val['addtimeb']."-".date('Y-m-d', intval($time))."<br>");
+
+        }
+
+    }
+
+    public function datecheckteamname()
+    {
+        $listd=Db::name('personage')->where('teamname','蔺支行营销科')->select();
+        foreach ($listd as $key=>$val){
+
+
+            $res=Db::name('personage')->where('id',$val['id'])->update(array('teamname'=>"古蔺支行营销科"));
+            if($res){
+                dump("<br>更新成功3".$val['id']);
+            }else{
+                dump("<br>更新失败3".$val['id']);
+            }
+//    dump("<br>".$val['client_id'].$val['addtimeb']."-".date('Y-m-d', intval($time))."<br>");
+
+        }
+
+    }
+
+    public function upuserquannian(){
+        $listd=Db::name('user')->select();
+//        dump($listd);die();
+        foreach ($listd as $key=>$val){
+
+            $updatas['all_allOrderNumber']=$val['allOrderNumber'];
+            $updatas['all_shoudanOrderNumber']=$val['shoudanOrderNumber'];
+            $resb=$listd=Db::name('user')->where('id',$val['id'])->update($updatas);
+
+            if($resb){
+
+                dump("<br>更新成功55".$resb['nickname']);
+            }else{
+                dump("<br>更新失败33".$resb['nickname']);
+            }
+        }
+
+    }
+
+    public function upuserteamidsd()
+    {
+        $wheres['allOrderNumber']=['>',0];
+        $listd=Db::name('user')->where($wheres)->select();
+//        dump($listd);die();
+        foreach ($listd as $key=>$val){
+
+
+            $res=Db::name('personage')->where('user_id',$val['id'])->find();
+            $resa=Db::name('categoryuser')->where('name',$res['teamname'])->where('levels',2)->find();
+            if($resa){
+                $updatas['teamid']=$resa['id'];
+                $updatas['teamname']=$resa['name'];
+                $updatas['iszhjs']=2;
+                $updatas['iscs']=2;
+                $resb=$listd=Db::name('user')->where('id',$val['id'])->update($updatas);
+
+                if($resb){
+
+
+
+                    dump("<br>更新成功5".$res['username']);
+                }else{
+                    dump("<br>更新失败3".$val['nickname']);
+                }
+
+            }else{
+                dump("<br>没有找到团队".$val['id']);
+            }
+
+        }
+
+    }
+
     public function upkehuuser()
     {
         $listd=Db::name('personage')->select();
@@ -431,15 +540,27 @@ if($res){
 
             $updataal=Db::name('user')->where('nickname',$val['username'])->find();
             $updata['user_id']=$updataal['id'];
-            $updata['teamid']=$updataal['teamid'];
-            $updata['zhihangid']=$updataal['zhihangid'];
-            $updata['zhihangname']=$updataal['zhihangname'];
-            $updata['teamname']=$updataal['teamname'];
+
+            if ($val['zhihangname']==$updataal['zhihangname']){
+
+                $updata['zhihangid']=$updataal['zhihangid'];
+            }else{
+
+                $updata['zhihangid']=Db::name('categoryuser')->where('name',$val['zhihangname'])->where('levels',1)->value('id');
+            }
+            if ($val['teamname']==$updataal['teamname']){
+                $updata['teamid']=$updataal['teamid'];
+            }else{
+                dump($teamname[$key]="团队名称不同".$val['id']);
+                $updata['teamid']=Db::name('categoryuser')->where('name',$val['teamname'])->where('levels',2)->value('id');
+            }
+
+
             $res=Db::name('personage')->where('id',$val['id'])->update($updata);
             if($res){
                 dump("<br>更新成功ID:".$updata['user_id']);
             }else{
-                dump("<br>更新失败");
+                dump("<br>更新失败".$val['username']);
             }
 //    dump("<br>".$val['client_id'].$val['addtimeb']."-".date('Y-m-d', intval($time))."<br>");
 
