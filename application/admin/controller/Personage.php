@@ -46,13 +46,13 @@ class Personage extends Backend
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
                 ->where($where)
-
+                ->order(['id'=>'desc','createtime'=>'desc'])
                 ->count();
 
 
             $list = $this->model
                 ->where($where)
-
+                ->order(['id'=>'desc','createtime'=>'desc'])
                 ->limit($offset, $limit)
                 ->select();
 //dump($list);die();
