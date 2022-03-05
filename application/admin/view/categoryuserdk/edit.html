@@ -1,0 +1,93 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <!--<div class="form-group">-->
+        <!--<label for="c-type" class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+
+            <!--<select id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">-->
+                <!--{foreach name="typeList" item="vo"}-->
+                <!--<option value="{$key}" {in name="key" value="$row.type"}selected{/in}>{$vo}</option>-->
+                <!--{/foreach}-->
+            <!--</select>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label for="c-pid" class="control-label col-xs-12 col-sm-2">{:__('Pid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select id="c-pid" data-rule="required" class="form-control selectpicker" name="row[pid]">
+                {foreach name="parentList" item="vo"}
+                <option data-type="{$vo.type}" class="{:$vo.type==$row.type||$vo.type=='all'?'':'hide'}" value="{$key}" {in name="key" value="$row.pid"}selected{/in}>{$vo.name}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-name" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-isrank" class="control-label col-xs-12 col-sm-2">{:__('是否参与排名')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-isrank" class="form-control selectpicker"   name="row[isrank]">
+
+                <option value="1" {in name="$row.isrank" value="1"}selected{/in}>参与排名</option>
+                <option value="2" {in name="$row.isrank" value="2"}selected{/in}>不参与排名</option>
+
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-levels" class="control-label col-xs-12 col-sm-2">{:__('参数团队/支行')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-levels" class="form-control selectpicker"  name="row[levels]">
+
+                <option value="1" {in name="$row.levels" value="1"}selected{/in}>一级支行</option>
+                <option value="2" {in name="$row.levels" value="2"}selected{/in}>参数团队</option>
+
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-daikuanOrderNumber" class="control-label col-xs-12 col-sm-2">本季度开户数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-daikuanOrderNumber" class="form-control" name="row[daikuanOrderNumber]" type="number" value="{$row.daikuanOrderNumber|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-all_daikuanOrderNumber" class="control-label col-xs-12 col-sm-2">累计开户数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-all_daikuanOrderNumber" class="form-control" name="row[all_daikuanOrderNumber]" type="number" value="{$row.all_daikuanOrderNumber|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-amount" class="control-label col-xs-12 col-sm-2">本季度贷款金额:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-amount" class="form-control" name="row[amount]" type="number" value="{$row.amount|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-all_amount" class="control-label col-xs-12 col-sm-2">累计贷款金额:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-all_amount" class="form-control" name="row[all_amount]" type="number" value="{$row.all_amount|htmlentities}">
+        </div>
+    </div>
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

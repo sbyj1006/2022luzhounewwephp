@@ -1,0 +1,84 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+<!--    <div class="form-group">-->
+<!--        <label for="c-zhihangid" class="control-label col-xs-12 col-sm-2">{:__('一级支行')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+
+<!--            <select id="c-zhihangid" data-rule="required" class="form-control selectpicker" name="row[zhihangid]">-->
+<!--                {volist name="zhihang" id="vo"}-->
+<!--                <option  value="{$vo.id}" {eq name="$row['zhihangid']" value="$vo.id"} selected{/eq}>{$vo.name}</option>-->
+<!--                {/volist}-->
+<!--            </select>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="c-teamid" class="control-label col-xs-12 col-sm-2">{:__('参赛团队')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+
+<!--            <select id="c-teamid" data-rule="required" class="form-control selectpicker" name="row[teamid]">-->
+<!--                {volist name="teams" id="vo"}-->
+<!--                <option  value="{$vo.id}" {eq name="$row['teamid']" value="$vo.id"} selected{/eq}>{$vo.name}</option>-->
+<!--                {/volist}-->
+<!--            </select>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">{:__('姓名')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-nickname" data-rule="required" class="form-control" name="row[nickname]" type="text" value="{$row.nickname|htmlentities}">
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="c-jobnumber" class="control-label col-xs-12 col-sm-2">{:__('jobnumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-jobnumber" data-rule="" class="form-control" name="row[jobnumber]" type="text" value="{$row.jobnumber|htmlentities}">
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="c-daikuanOrderNumber" class="control-label col-xs-12 col-sm-2">{:__('daikuanOrderNumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-daikuanOrderNumber" data-rule="" class="form-control" name="row[daikuanOrderNumber]" type="text" value="{$row.daikuanOrderNumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-all_daikuanOrderNumber" class="control-label col-xs-12 col-sm-2">{:__('all_daikuanOrderNumber')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-all_daikuanOrderNumber" data-rule="" class="form-control" name="row[all_daikuanOrderNumber]" type="text" value="{$row.all_daikuanOrderNumber|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-amount" class="control-label col-xs-12 col-sm-2">{:__('amount')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-amount" data-rule="" class="form-control" name="row[amount]" type="text" value="{$row.amount|htmlentities}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-all_amount" class="control-label col-xs-12 col-sm-2">{:__('all_amount')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-all_amount" data-rule="" class="form-control" name="row[all_amount]" type="text" value="{$row.all_amount|htmlentities}">
+        </div>
+    </div>
+
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
