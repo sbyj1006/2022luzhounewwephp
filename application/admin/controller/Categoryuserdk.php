@@ -28,9 +28,10 @@ class Categoryuserdk extends Backend
         parent::_initialize();
         $this->model = model('app\common\model\Categoryuserdk');
 
-        $tree = Tree::instance();
-        $tree->init(collection($this->model->order('rank desc,id desc')->select())->toArray(), 'pid');
-        $this->categorylist = $tree->getTreeLists($tree->getTreeArrays(0), 'name');
+//        $tree = Tree::instance();
+//        $tree->init(collection($this->model->order('rank desc,id desc')->select())->toArray(), 'pid');
+//        $this->categorylist = $tree->getTreeLists($tree->getTreeArrays(0), 'name');
+        $this->categorylist= $this->model->select();
         $categorydata = [0 => ['type' => 'all', 'name' => __('None')]];
         foreach ($this->categorylist as $k => $v) {
             $categorydata[$v['ids']] = $v;

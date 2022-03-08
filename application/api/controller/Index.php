@@ -138,6 +138,7 @@ class Index extends Api
 
         $pmdatateam['allOrderNumber']=Db::name('categoryuser')
 //            ->where($wheregj)
+            ->where('levels',2)
             ->order('allOrderNumber desc')
             ->limit(1)
             ->select();
@@ -148,6 +149,7 @@ class Index extends Api
 
         $pmdatateam['shoudanOrderNumber']=Db::name('categoryuser')
 //            ->where($wheregj)
+            ->where('levels',2)
             ->order('shoudanOrderNumber desc')
             ->limit(1)
             ->select();
@@ -158,6 +160,7 @@ class Index extends Api
 
         $pmdatateam['daikuanOrderNumber']=Db::name('categoryuser_dk')
 //            ->where($wheregj)
+            ->where('levels',2)
             ->order('daikuanOrderNumber desc')
             ->limit(1)->select();
 
